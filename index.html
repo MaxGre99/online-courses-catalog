@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Our Online Courses — Createx</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+		<section class="catalog">
+			<!-- Decorative dots -- top right -->
+			<span class="catalog__deco catalog__deco--dots" aria-hidden="true"></span>
+
+			<!-- Decorative shapes -- left-cennter -->
+			<span
+				class="catalog__deco catalog__deco--shapes"
+				aria-hidden="true"
+			></span>
+
+			<!-- Decorative chevrons -- bottom-right -->
+			<span class="catalog__deco catalog__deco--chevrons" aria-hidden="true">
+			</span>
+
+			<div class="catalog__inner">
+				<!-- Header-->
+				<header class="catalog__head">
+					<h6 class="catalog__eyebrow">Enjoy your studying!</h6>
+					<h1 class="catalog__title">Our online courses</h1>
+				</header>
+
+				<!--Controls: filters + search -->
+				<div class="catalog__controls">
+					<nav class="catalog__filters" aria-label="Filter by category">
+						<button
+							class="catalog__filter catalog__filter--active"
+							data-cat="all"
+							type="button"
+							aria-pressed="true"
+						>
+							All <sup>17</sup>
+						</button>
+						<button
+							class="catalog__filter"
+							data-cat="Marketing"
+							type="button"
+							aria-pressed="false"
+						>
+							Marketing <sup>4</sup>
+						</button>
+						<button
+							class="catalog__filter"
+							data-cat="Management"
+							type="button"
+							aria-pressed="false"
+						>
+							Management <sup>3</sup>
+						</button>
+						<button
+							class="catalog__filter"
+							data-cat="HR &amp; Recruting"
+							type="button"
+							aria-pressed="false"
+						>
+							HR &amp; Recruting <sup>5</sup>
+						</button>
+						<button
+							class="catalog__filter"
+							data-cat="Design"
+							type="button"
+							aria-pressed="false"
+						>
+							Design <sup>2</sup>
+						</button>
+						<button
+							class="catalog__filter"
+							data-cat="Development"
+							type="button"
+							aria-pressed="false"
+						>
+							Development <sup>3</sup>
+						</button>
+					</nav>
+
+					<div class="catalog__search-wrap">
+						<label class="visually-hidden" for="courseSearch"
+							>Search courses</label
+						>
+						<input
+							type="search"
+							class="catalog__search"
+							id="courseSearch"
+							placeholder="Search course..."
+							autocomplete="off"
+						/>
+						<button
+							class="catalog__search-icon"
+							type="button"
+							aria-label="Search"
+						>
+							<span
+								class="catalog__search-icon-image"
+								aria-hidden="true"
+							></span>
+						</button>
+					</div>
+				</div>
+
+				<!-- Grid -->
+				<div
+					class="catalog__grid"
+					id="catalogGrid"
+					role="list"
+					aria-live="polite"
+					aria-label="Course catalogue"
+				></div>
+
+				<!-- Empty state-->
+				<div class="catalog__empty" id="catalogEmpty" hidden>
+					<span class="catalog__empty-icon" aria-hidden="true"></span>
+					<p>No courses found</p>
+					<span>Try different keywords or change the filter</span>
+				</div>
+
+				<!-- Load more-->
+				<div class="catalog__more-wrap" id="loadMoreWrap">
+					<button class="catalog__more-btn" id="loadMoreBtn" type="button">
+						<span class="catalog__more-icon" aria-hidden="true"></span>
+						Load more
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>

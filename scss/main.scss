@@ -1,0 +1,524 @@
+[hidden] {
+	display: none !important;
+}
+
+/* Variables */
+$clr-primary: #ff3f3a;
+$clr-card-yellow: #ffcf2d;
+$clr-text: #1e212c;
+$clr-text-muted: #787a80;
+$clr-border: #d7dadd;
+$clr-card-border: #e5e8ed;
+$clr-white: #fff;
+$clr-bg: #fff;
+
+$clr-badge-marketing: #03cea4;
+$clr-badge-management: #5a87fc;
+$clr-badge-hr: #f89828;
+$clr-badge-design: #f52f6e;
+$clr-badge-development: #7772f1;
+
+$font: 'Lato', system-ui, sans-serif;
+$radius-sm: 4px;
+$shadow-card: 0 4px 24px rgba(30, 33, 44, 0.08);
+$shadow-hover: 0 14px 36px rgba(30, 33, 44, 0.14);
+$transition: 0.22s ease;
+
+/* 2. Base reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: $font;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 150%;
+	letter-spacing: 0%;
+	color: $clr-text;
+	background: $clr-bg;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100svh;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	background: none;
+	font: inherit;
+	color: inherit;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+input {
+	font: inherit;
+}
+
+h1 {
+	font-size: 46px;
+	font-weight: 900;
+	letter-spacing: 0%;
+	line-height: 130%;
+}
+
+h6 {
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 150%;
+}
+
+/* Accessibility helper */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* 3. Catalog section */
+.catalog {
+	position: relative;
+	overflow: hidden;
+	padding: 50px 0 60px 0;
+
+	/* Decorative elements */
+	&__deco {
+		position: absolute;
+		pointer-events: none;
+		user-select: none;
+		z-index: 0;
+
+		/* Dot-grid: top-right corner */
+		&--dots {
+			top: 50px;
+			right: 0;
+			width: 105px;
+			height: 143px;
+			background-image: url('../assets/dots.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		/* Triple chevrons: left-center */
+		&--shapes {
+			background-image: url('../assets/shapes.svg');
+			background-repeat: no-repeat;
+			background-size: contain;
+			top: 36%;
+			left: 56px;
+			width: 83px;
+			height: 44px;
+		}
+
+		/* Stacked squares: bottom-right */
+		&--chevrons {
+			background-image: url('../assets/chevrons.svg');
+			background-repeat: no-repeat;
+			background-size: contain;
+			top: 60%;
+			right: 157px;
+			width: 85px;
+			height: 58px;
+		}
+
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	/* Inner container */
+	&__inner {
+		position: relative;
+		z-index: 1;
+		max-width: 1240px;
+		margin: 0 auto;
+		padding: 0 clamp(1rem, 4vw, 2rem);
+	}
+
+	/* Header */
+	&__head {
+		text-align: center;
+		margin-bottom: clamp(2rem, 4.5vw, 3.75rem);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+
+	&__eyebrow {
+		text-transform: uppercase;
+	}
+
+	/* Controls bar */
+	&__controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: clamp(1.5rem, 3.5vw, 2.75rem);
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	/* Filter tabs */
+	&__filters {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex: 1;
+		flex-wrap: wrap;
+	}
+
+	&__filter {
+		display: flex;
+		align-items: start;
+		gap: 4px;
+		padding: 10px 20px;
+		border-radius: $radius-sm;
+		color: $clr-text-muted;
+		border: 1px solid transparent;
+		white-space: nowrap;
+		transition:
+			color $transition,
+			border-color $transition;
+
+		sup {
+			font-size: 10px;
+			font-weight: 900;
+			transition: color $transition;
+		}
+
+		&:hover:not(&--active) {
+			color: $clr-text;
+		}
+
+		&--active {
+			color: $clr-primary;
+			border-color: $clr-primary;
+
+			sup {
+				color: $clr-primary;
+			}
+		}
+	}
+
+	/* Search */
+	&__search-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border: 1px solid $clr-border;
+		border-radius: $radius-sm;
+		padding: 12px 16px;
+		background: $clr-white;
+		min-width: clamp(150px, 18vw, 220px);
+		transition: border-color $transition;
+
+		&:focus-within {
+			border-color: $clr-primary;
+		}
+	}
+
+	&__search {
+		border: none;
+		outline: none;
+		background: transparent;
+		font-size: 14px;
+		font-weight: 400;
+		color: $clr-text;
+		flex: 1;
+		min-width: 0;
+
+		&::placeholder {
+			color: $clr-text-muted;
+		}
+
+		/* hide native clear button */
+		&::-webkit-search-cancel-button {
+			-webkit-appearance: none;
+		}
+	}
+
+	&__search-icon {
+		color: $clr-text-muted;
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+		padding: 0;
+		transition: color $transition;
+
+		&-image {
+			display: block;
+			width: 16px;
+			height: 16px;
+
+			background-color: currentColor;
+
+			mask: url('../assets/search.svg') center / contain no-repeat;
+			-webkit-mask: url('../assets/search.svg') center / contain no-repeat;
+		}
+
+		&:hover {
+			color: $clr-primary;
+		}
+	}
+
+	/* Cards grid */
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(min(clamp(240px, 28vw, 340px), 100%), 1fr)
+		);
+		gap: clamp(1rem, 2.2vw, 1.5rem);
+	}
+
+	/* Empty state */
+	&__empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		padding: clamp(3rem, 7vw, 5rem) 1rem;
+		text-align: center;
+
+		&-icon {
+			display: block;
+			width: 48px;
+			height: 48px;
+
+			background-color: currentColor;
+
+			mask: url('../assets/search.svg') center / contain no-repeat;
+			-webkit-mask: url('../assets/search.svg') center / contain no-repeat;
+		}
+
+		p {
+			font-size: clamp(1rem, 1.5vw, 1.2rem);
+			font-weight: 700;
+			color: $clr-text;
+		}
+
+		span {
+			font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+			color: $clr-text-muted;
+		}
+	}
+
+	/* Load more */
+	&__more-wrap {
+		margin-top: clamp(1.75rem, 4vw, 3rem);
+		text-align: center;
+	}
+
+	&__more-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: clamp(0.875rem, 1.2vw, 1rem);
+		font-weight: 500;
+		color: $clr-text;
+		transition: color $transition;
+
+		.catalog__more-icon {
+			width: 16px;
+			height: 16px;
+
+			background-color: currentColor;
+
+			mask: url('../assets/convert.svg') center / contain no-repeat;
+			-webkit-mask: url('../assets/convert.svg') center / contain no-repeat;
+
+			transition: transform 0.4s ease;
+		}
+
+		&:hover {
+			color: $clr-primary;
+
+			.catalog__more-icon {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+}
+
+/* 4. Course card */
+.course-card {
+	display: flex;
+	flex-direction: column;
+	background: $clr-white;
+	border: 1px solid $clr-card-border;
+	border-radius: $radius-sm;
+	box-shadow: $shadow-card;
+	overflow: hidden;
+	transition:
+		transform $transition,
+		box-shadow $transition;
+	will-change: transform;
+
+	&:hover {
+		transform: translateY(-5px);
+		box-shadow: $shadow-hover;
+	}
+
+	/* Thumbnail */
+	&__thumb {
+		position: relative;
+		background-color: $clr-card-yellow;
+		height: 240px;
+		overflow: hidden;
+
+		img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: top center;
+			z-index: 2;
+			transition: transform 0.35s ease;
+		}
+	}
+
+	&:hover &__thumb img {
+		transform: scale(1.04);
+	}
+
+	/* Body */
+	&__body {
+		padding: 24px;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		align-items: start;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	/* Category badge */
+	&__badge {
+		display: inline-block;
+		padding: 1px 8px;
+		border-radius: $radius-sm;
+		font-size: 14px;
+		font-weight: 400;
+		color: $clr-white;
+
+		&--marketing {
+			background: $clr-badge-marketing;
+		}
+		&--management {
+			background: $clr-badge-management;
+		}
+		&--hr {
+			background: $clr-badge-hr;
+		}
+		&--design {
+			background: $clr-badge-design;
+		}
+		&--development {
+			background: $clr-badge-development;
+		}
+	}
+
+	/* Course title */
+	&__name {
+		font-size: 20px;
+		font-weight: 700;
+		color: $clr-text;
+		line-height: 150%;
+
+		/* Clamp to 2 lines */
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	/* Meta: price + author */
+	&__meta {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		font-size: 18px;
+	}
+
+	&__price {
+		font-weight: 700;
+		color: $clr-primary;
+	}
+
+	&__sep {
+		color: $clr-border;
+		user-select: none;
+		font-weight: 400;
+	}
+
+	&__author {
+		color: $clr-text-muted;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-weight: 400;
+	}
+}
+
+/* 5. Card enter animation */
+@keyframes cardIn {
+	from {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.course-card {
+	animation: cardIn 0.35s ease both;
+}
+
+/* 6. Narrow-screen adjustments (< ~480px) */
+/*
+   No fixed breakpoints -- fluid grid auto-adjusts.
+   These rules fine-tune padding/layout at very small viewport widths.
+*/
+@media (max-width: 520px) {
+	.catalog__controls {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.catalog__search-wrap {
+		min-width: 0;
+		width: 100%;
+	}
+
+	.catalog__filters {
+		justify-content: center;
+	}
+}
